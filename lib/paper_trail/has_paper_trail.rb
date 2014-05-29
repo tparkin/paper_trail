@@ -268,7 +268,7 @@ module PaperTrail
       end
 
       def record_update
-        if paper_trail_switched_on? && changed_notably?
+        if paper_trail_switched_on? # && changed_notably?
           object_attrs = object_attrs_for_paper_trail(item_before_change)
           data = {
             :event     => paper_trail_event || 'update',
