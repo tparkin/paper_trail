@@ -74,8 +74,8 @@ module PaperTrail
         after_create  :record_create, :if => :save_version? if options_on.empty? || options_on.include?(:create)
         if options_on.empty? || options_on.include?(:update)
           before_save   :reset_timestamp_attrs_for_update_if_needed!, :on => :update
-          before_update :record_update, :if => :save_version?
-          after_update  :clear_version_instance!
+          after_update :record_update, :if => :save_version?
+          #after_update  :clear_version_instance!
         end
         after_destroy :record_destroy, :if => :save_version? if options_on.empty? || options_on.include?(:destroy)
       end
