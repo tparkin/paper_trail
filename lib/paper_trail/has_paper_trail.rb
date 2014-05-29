@@ -280,7 +280,7 @@ module PaperTrail
             data[:object_changes] = self.class.paper_trail_version_class.object_changes_col_is_json? ? changes_for_paper_trail :
               PaperTrail.serializer.dump(changes_for_paper_trail)
           end
-          send(self.class.versions_association_name).build merge_metadata(data)
+          send(self.class.versions_association_name).create! merge_metadata(data)
         end
       end
 
